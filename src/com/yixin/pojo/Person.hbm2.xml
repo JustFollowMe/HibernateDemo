@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.yixin.pojo.Person" table="t_person">
+		<id name="id">  
+        	<generator class="native"></generator>
+        </id>  
+        <property name="name"></property>  
+        
+        <!-- 采用<mang-to-one>标签来映射，指定多的一端unique为true,这样就限制了多的一端的多重性为一，就是这样来映射的。  -->  
+		<many-to-one name="idCard" class="com.yixin.pojo.IdCard" column="idCardid" unique="true"></many-to-one>  
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.yixin.pojo.IdCard" table="t_idCard">  
+        <id name="id">  
+            <generator class="native"></generator>  
+        </id>  
+        <property name="cardNo"></property> 
+        <!-- 一对一唯一外键关联双向采用<one-to-one>标签来映射，必须指定<one-to-one>标签中的property-ref属性为关系字段的名称  -->  
+        <one-to-one name="person" class="com.yixin.pojo.Person" property-ref="idCard"></one-to-one> 
+    </class>  
+</hibernate-mapping>

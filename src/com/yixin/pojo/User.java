@@ -1,6 +1,7 @@
 package com.yixin.pojo;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity //不写Table默认为user，@Table(name="t_user")
 @Table(name="t_user")
@@ -27,8 +26,8 @@ public class User {
 //    @GeneratedValue(strategy=GenerationType.AUTO)//采用数据库自增方式生成主键  
 //	@GeneratedValue(generator="uuid")
 //	@GenericGenerator(name="uuid",strategy="identity")
-	@GeneratedValue(strategy = GenerationType.IDENTITY) 
-	private String id;  
+	@GeneratedValue(strategy = GenerationType.AUTO) 
+	private int id;  
 	
 	
 	@Column(name="name",unique=true,nullable=false) //字段为name，不允许为空，用户名唯一
@@ -45,10 +44,26 @@ public class User {
     @Column(name="expireTime")
     private Date expireTime;
     
-	public String getId() {
+    private Group groups;
+    
+    private Set<Role> roles;
+    
+	public Set<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+	public Group getGroups() {
+		return groups;
+	}
+	public void setGroups(Group groups) {
+		this.groups = groups;
+	}
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getName() {

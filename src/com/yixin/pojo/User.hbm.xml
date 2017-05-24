@@ -3,15 +3,20 @@
 	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<!--生成默认为user的数据库表-->
-	<class name="com.yixin.pojo.User">
-		<id name="id">
-			<!-- 算法的核心思想是结合机器的网卡、当地时间、一个随机数来生成GUID -->
-			<generator class="uuid"></generator>
-		</id>
-		<property name="name"></property>
-		<property name="password"></property>
-		<property name="createTime" type="date"></property>
-		<property name="expireTime" type="date"></property>
-	</class>
+	<class name="com.yixin.pojo.User" table="t_user">  
+        <id name="id">  
+            <generator class="native"></generator>  
+        </id>  
+        <property name="name"></property>  
+        <!-- group属性，表达的是本对象与Group的多对一的关系-->  
+        <many-to-one name="group" class="com.yixin.pojo.Group" column="groupid"></many-to-one>  
+        <!-- 解释：  
+                                多对一关系标签：  
+            <many-to-one name="" class="" column=""/>  
+            1、第1个问号：group是User类的属性，对应于name属性名  
+            2、第2个问号：class表达的是本对象(User)与Group的关系  
+            3、第3个问号：column是属性名+id  
+                                        当我们写完注释之后，我们直接拷贝问号的对应关系即可。  
+         -->  
+    </class>  
 </hibernate-mapping>

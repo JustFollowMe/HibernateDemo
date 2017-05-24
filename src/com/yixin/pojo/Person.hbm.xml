@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.yixin.pojo.Person" table="t_person">
+		<id name="id">  
+        <!-- 采用foreign生成策略，forgeign会取得另外一个关联对象的标识 -->  
+            <generator class="foreign" >  
+                <param name="property">idCard</param>  
+            </generator>  
+        </id>  
+        <property name="name"></property>  
+        <!--   
+            one-to-one指示hibernate如何加载其关联对象，默认根据主键加载  
+                                也就是拿到关系字段值，根据对端的主键来加载关联对象  
+            constrained="true"表示约束，当前主键（person的主键）还是一个外键  
+                                参照了对端的主键（IdCard的主键），也就是会生成外键约束语句  
+         -->  
+         <!-- idCard属性，表达的是本对象与IdCard的一对一关系。 -->  
+        <one-to-one name="idCard" class="com.yixin.pojo.IdCard"  constrained="true"></one-to-one>
+	</class>
+</hibernate-mapping>

@@ -16,10 +16,15 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 		<!-- 显示SQL语句 -->
 		<property name="hibernate.show_sql">true</property>
-		<!-- 映射文件
-		<mapping resource="com/yixin/pojo/User.hbm.xml"/>
-		 -->
-		<!-- 由原来的映射文件，改成实体类   -->
+		<!-- 映射文件-->
+		<mapping resource="com/yixin/pojo/User.hbm6.xml"/>
+		<mapping resource="com/yixin/pojo/Role.hbm6.xml"/>
+		<mapping resource="com/yixin/pojo/Group.hbm4.xml"/>
+		<mapping resource="com/yixin/pojo/Person.hbm3.xml"/>
+		<mapping resource="com/yixin/pojo/IdCard.hbm3.xml"/>
+		 
+		<!-- 由原来的映射文件，改成实体类  
         <mapping class="com.yixin.pojo.User"/> 
+         -->
 	</session-factory>
 </hibernate-configuration>

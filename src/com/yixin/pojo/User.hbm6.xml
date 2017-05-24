@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.yixin.pojo.User" table="t_user">  
+        <id name="id">  
+            <generator class="native"></generator>  
+        </id>  
+        <property name="name"></property>  
+        <!-- roles属性，表达的是本对象（User）与Role的多对多的关系 -->    
+        <set name="roles" table="t_user_role">  
+            <!--当前表（User）的主键-->  
+            <key column="user_id"></key>  
+            <many-to-many class="com.yixin.pojo.Role" column="role_id"></many-to-many>  
+        </set>  
+    </class>  
+</hibernate-mapping>

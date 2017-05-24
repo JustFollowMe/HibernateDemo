@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!--生成默认为t_group的数据库表-->
+	<class name="com.yixin.pojo.Group" table="t_group">
+		<id name="id">  
+            <generator class="native"/>  
+        </id>  
+        <property name="name"/>  
+        <!-- 影响控制反转：inverse="false",多的一端维护关系，让一的一端失效 -->  
+        <set name="users" inverse="true">  
+            <key column="groupid" not-null="true"/>  
+            <one-to-many class="com.yixin.pojo.User"/>  
+        </set>   
+	</class>
+</hibernate-mapping>

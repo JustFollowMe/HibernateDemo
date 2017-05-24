@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.yixin.pojo.IdCard" table="t_idCard">  
+        <id name="id">  
+            <generator class="native"></generator>  
+        </id>  
+        <property name="cardNo"></property>
+        <!-- 怎么加载对象，抓取策略：join联合查询（默认），select:一条条的查询 -->  
+        <one-to-one name="person" class="com.yixin.pojo.Person" fetch="join"></one-to-one>   
+    </class>  
+</hibernate-mapping>
